@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class SieveOfEratosthenes {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please Enter Ending Number :");
+        int capacity = scanner.nextInt();
+        boolean[] isPrime = new boolean[capacity + 1];
+        for (int i = 2; i <= capacity; i++) {
+            isPrime[i] = true;
+        }
+        Sieve(isPrime, capacity);
+    }
+
+    public static void Sieve(boolean[] isPrime, int capacity) {
+        isPrime[0] = false;
+        isPrime[1] = false;
+        for (int i = 2; i <= capacity; i++) {
+            if (isPrime[i]) {
+                for (int j = i * i; j <= capacity; j += i) {
+                    isPrime[j] = false;
+
+                }
+            }
+        }
+
+        System.out.printf("Prime number up to %d are :", capacity);
+
+        for (int i = 2; i <= capacity; i++) {
+            if (isPrime[i]) {
+                System.out.printf("%d  ", i);
+            }
+
+        }
+    }
+}
