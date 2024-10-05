@@ -1,0 +1,40 @@
+public class QuickSort1 {
+    public static void main(String[] args) {
+        int[] datalist = {8, 1, 3, 2, 4, 6, 41, 54, 87};
+        int len = datalist.length;
+        quicksort(datalist, 0, len - 1);
+        System.out.println("sorted array is :");
+        Display(datalist);
+    }
+
+    public static void quicksort(int[] array, int low, int high) {
+        if (low <= high) {
+            int pi = partition(array, low, high);
+            quicksort(array, low, pi - 1);
+            quicksort(array, pi + 1, high);
+        }
+    }
+
+    public static int partition(int[] array, int low, int high) {
+        int i = low + 1;
+        int pivot = array[low];
+        for (int j = low + 1; j <= high; j++) {
+            if (array[j] < pivot) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+            }
+        }
+        int temp = array[low];
+        array[low] = array[i - 1];
+        array[i - 1] = temp;
+        return i - 1;
+    }
+
+    public static void Display(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+    }
+}
