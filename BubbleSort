@@ -1,0 +1,21 @@
+public class BubbleSort {
+    public static void main(String[] args) {
+        int[] datalist = {1, 2, 3, 0, 98, 7, 6, 9, 5, 4};
+        int temp;
+        int len = datalist.length;
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len - 1 - i; j++) {
+                if (datalist[j] > datalist[j + 1]) {
+                    temp = datalist[j];
+                    datalist[j] = datalist[j + 1];
+                    datalist[j + 1] = temp;
+
+                }
+            }
+        }
+
+        for (int num : datalist) {
+            System.out.print(num + " ");
+        }
+    }
+}
