@@ -1,0 +1,25 @@
+import java.util.Scanner;
+
+public class EuclideanGCD {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+
+        int GCD = FindGcd(a, b);
+        System.out.printf("GCD of %d and %d is %d", a, b, GCD);
+
+    }
+
+    public static int FindGcd(int a, int b) {
+        while (b != 0) {
+            int remainder = a % b;
+            a = b;
+            b = remainder;
+        }
+
+        return a;
+    }
+
+
+}
