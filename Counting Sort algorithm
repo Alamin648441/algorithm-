@@ -1,0 +1,47 @@
+public class CountingSort {
+    public static void countingSort(int[] array) {
+        int max = findmax(array);
+
+        int[] count = new int[max + 1];
+
+        for (int num : array) {
+            count[num] = count[num] + 1;
+        }
+
+        for (int i = 1; i < count.length; i++) {
+            count[i] = count[i] + count[i - 1];
+        }
+        int[]output = new int[array.length];
+
+        for (int i = array.length - 1; i >= 0; i--) {
+            output[count[array[i]] - 1] = array[i];
+            count[array[i]]--;
+        }
+        System.arraycopy(output,0,array,0,array.length);
+    }
+
+
+    public static int findmax(int[] array) {
+        int max = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        int[]array = {1,3,4,5,6,3,2,1,3,2,0,0,2,4};
+        System.out.println("Original array :");
+        for(int num :array){
+            System.out.print(num+" ");
+        }
+        System.out.println();
+        countingSort(array);
+        System.out.println("Sorted array :");
+        for (int num: array){
+            System.out.print(num+" ");
+        }
+    }
+}
